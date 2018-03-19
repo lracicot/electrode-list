@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import { fromJS } from 'immutable';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 //
 
 //
@@ -24,9 +25,11 @@ window.webappStart = () => {
   initialState.app = fromJS(initialState.app);
   const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
   render(
-    <Provider store={store}>
-      <Router history={browserHistory}>{routes}</Router>
-    </Provider>,
+    <MuiThemeProvider>
+      <Provider store={store}>
+        <Router history={browserHistory}>{routes}</Router>
+      </Provider>
+    </MuiThemeProvider>,
     document.querySelector('.js-content')
   );
 };

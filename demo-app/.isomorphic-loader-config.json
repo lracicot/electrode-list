@@ -1,7 +1,7 @@
 {
   "valid": true,
   "version": "1.6.5",
-  "timestamp": 1521444443209,
+  "timestamp": 1521491011097,
   "context": "src/client",
   "output": {
     "path": "dist/js",
@@ -13,7 +13,7 @@
     "chunks": {
       "main": [
         "main.bundle.dev.js",
-        "main.style.f469eca789c25f8f1329.css",
+        "main.style.8f27e2af06e00219f443.css",
         "main.style.css"
       ]
     }

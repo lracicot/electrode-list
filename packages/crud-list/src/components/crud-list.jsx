@@ -63,8 +63,6 @@ export default class CrudList extends React.Component {
 
     const hasActions = hasDelete || hasView || hasEdit;
 
-    console.log(hasActions);
-
     if (hasActions) {
       const getActionButtons = row => {
         let deleteButton = '';
