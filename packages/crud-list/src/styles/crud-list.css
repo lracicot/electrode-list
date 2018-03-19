@@ -1,0 +1,38 @@
+.backendui__list {
+  width: 100%;
+}
+
+.backendui__list__row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 0 0;
+  padding: 0;
+}
+
+.backendui__list__cell, .backendui__list__header {
+  box-sizing: border-box;
+  flex-grow: 1;
+  width: 20%;
+  padding: 0.8em 1.2em;
+  overflow: hidden;
+  list-style: none;
+  border-bottom: solid 1px #aaa;
+}
+
+.backendui__list__header {
+  text-align: center;
+  font-weight: bold;
+  border-bottom: solid 1px #666;
+}
+
+.backendui__list__row:nth-of-type(odd) {
+	background: #fff;
+}
+
+.backendui__list__row:nth-of-type(even) {
+	background: #eee;
+}
+
+button {
+  margin-bottom: 0px;
+}

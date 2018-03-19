@@ -1,0 +1,62 @@
+{
+  "name": "demo-app",
+  "version": "0.0.1",
+  "description": "The demo App",
+  "homepage": "https://github.com//",
+  "author": {
+    "name": "Louis Racicot",
+    "email": "lracicot@.com",
+    "url": "https://github.com/lracicot"
+  },
+  "contributors": [],
+  "files": [
+    "server",
+    "client",
+    "test"
+  ],
+  "main": "lib/server/index.js",
+  "keywords": [
+    "electrode"
+  ],
+  "repository": {},
+  "engines": {
+    "node": ">= 4 <= 8",
+    "npm": ">= 3 <= 5"
+  },
+  "scripts": {
+    "build": "clap build",
+    "prestart": "clap build",
+    "start": "if test \"$NODE_ENV\" = \"production\"; then npm run prod; else clap dev; fi",
+    "test": "clap check",
+    "coverage": "clap check",
+    "prod": "echo 'Starting standalone server in PROD mode'; NODE_ENV=production node ./lib/server/",
+    "heroku-postbuild": "clap build"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-preset-es2015": "^6.24.1",
+    "bluebird": "^3.4.6",
+    "crud-list": "../packages/crud-list",
+    "electrode-archetype-react-app": "^4.0.0",
+    "electrode-confippet": "^1.0.0",
+    "electrode-react-webapp": "^2.1.0",
+    "electrode-redux-router-engine": "^1.5.0",
+    "electrode-server": "^1.0.0",
+    "electrode-static-paths": "^1.0.0",
+    "immutable": "^3.8.2",
+    "lodash": "^4.10.1",
+    "material-ui": "^0.20.0",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
+    "react-tap-event-plugin": "^3.0.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "electrode-archetype-react-app-dev": "^4.0.0"
+  },
+  "private": true
+}

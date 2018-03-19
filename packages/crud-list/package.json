@@ -1,0 +1,41 @@
+{
+  "name": "crud-list",
+  "version": "0.0.1",
+  "description": "crud-list",
+  "main": "lib/index.js",
+  "author": {
+    "name": "Louis Racicot",
+    "url": "https://github.com/lracicot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//.git"
+  },
+  "bugs": {
+    "url": "https://github.com///issues"
+  },
+  "homepage": "https://github.com//",
+  "dependencies": {
+    "react-table": "^6.8.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "electrode-archetype-react-component": "^4.0.0",
+    "electrode-archetype-react-component-dev": "^4.0.0"
+  },
+  "engines": {
+    "node": ">= 4",
+    "npm": ">= 3"
+  },
+  "scripts": {
+    "prepublish": "clap prepublish",
+    "start": "clap demo",
+    "test": "clap check"
+  },
+  "keywords": [
+    "react",
+    "electrode",
+    "electrode-component",
+    "react-component"
+  ]
+}
