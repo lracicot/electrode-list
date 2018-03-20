@@ -28,7 +28,7 @@ process.env.SERVER_ES6 = true;
  * for webpack dev server when running in dev mode with `clap dev`
  */
 
-// process.env.WEBPACK_DEV_HOST = "dev.mymachine.net";
+process.env.WEBPACK_DEV_HOST = '0.0.0.0';
 // process.env.WEBPACK_DEV_PORT = 8100;
 
 /*

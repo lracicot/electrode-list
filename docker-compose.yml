@@ -1,0 +1,28 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: npm start
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    links:
+      - api
+    ports:
+      - "3000:3000"
+      - "2992:2992"
+    environment:
+      - INVOICE_API_URL=http://api:3001/invoices
+  api:
+    build: ../crudapi
+    volumes:
+      - ../crudapi:/usr/app/
+    links:
+      - db
+    command: npm start
+    ports:
+      - "3001:3001"
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"

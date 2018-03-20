@@ -1,26 +1,26 @@
 {
   "valid": true,
   "version": "1.6.5",
-  "timestamp": 1521491011097,
+  "timestamp": 1521510272628,
   "context": "src/client",
   "output": {
     "path": "dist/js",
     "filename": "[name].bundle.dev.js",
-    "publicPath": "http://localhost:2992/js/"
+    "publicPath": "http://0.0.0.0:2992/js/"
   },
   "assets": {
     "marked": {},
     "chunks": {
       "main": [
         "main.bundle.dev.js",
-        "main.style.8f27e2af06e00219f443.css",
+        "main.style.bb3f2a8ce3a0654d5ca8.css",
         "main.style.css"
       ]
     }
   },
   "webpackDev": {
     "skipSetEnv": false,
-    "url": "http://localhost:2992",
+    "url": "http://0.0.0.0:2992",
     "addUrl": false
   },
   "isWebpackDev": true,

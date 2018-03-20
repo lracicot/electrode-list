@@ -115,17 +115,6 @@ export default class CrudList extends React.Component {
         defaultPageSize={pageSize}
         className="-striped -highlight"
       />
-      // <div>
-      //   <List
-      //     data={data}
-      //     columns={cols}
-      //     handleDelete={handleDelete}
-      //     handleView={handleView}
-      //     handleEdit={handleEdit}
-      //     handleSort={sortAction}
-      //     order={order}
-      //   />
-      // </div>
     );
   }
 }
