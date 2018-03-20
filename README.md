@@ -28,7 +28,8 @@ To start playing with the included demo components:
 ```bash
 cd demo-app
 npm install
-clap dev
+cd ..
+docker-compose up
 ```
 
 Then open your browser to `http://localhost:3000`
