@@ -1,11 +1,10 @@
 version: '3'
 services:
   web:
-    build: .
+    build: ./crud-list
     command: npm start
     volumes:
-      - .:/usr/app/
-      - /usr/app/node_modules
+      - ./crud-list:/usr/app/
     links:
       - api
     ports:
@@ -14,9 +13,9 @@ services:
     environment:
       - INVOICE_API_URL=http://api:3001/invoices
   api:
-    build: ../crudapi
+    build: ./crudapi
     volumes:
-      - ../crudapi:/usr/app/
+      - ./crudapi:/usr/app/
     links:
       - db
     command: npm start
