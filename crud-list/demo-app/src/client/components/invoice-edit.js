@@ -28,7 +28,7 @@ export class InvoiceEdit extends Component {
       <div>
         <h1>Invoice</h1>
         <InvoiceForm
-          onSubmit={saveAction}
+          onSubmit={saveAction.bind(this)}
           entityId={invoice.get('id')}
         />
       </div>
@@ -47,15 +47,15 @@ InvoiceEdit.defaultProps = {
 
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  updateInvoice: InvoiceActions.updateInvoice
+  updateInvoice: InvoiceActions.updateInvoice,
+  retreiveInvoices: InvoiceActions.retreiveInvoices
 }, dispatch);
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps);
   const appState = fromJS(state.app);
   return ({
     invoice: appState.getIn(['data', 'invoices'])
-      .find(invoice => invoice.get('_id') === parseInt(ownProps.match.params.id, 10))
+      .find(invoice => invoice.get('_id') === ownProps.params.id)
   });
 };
 

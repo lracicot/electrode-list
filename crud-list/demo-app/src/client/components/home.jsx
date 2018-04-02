@@ -4,6 +4,7 @@ import { IntlProvider } from 'react-intl';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { List, Map, fromJS } from 'immutable';
+import { browserHistory } from 'react-router';
 
 import { CrudList } from 'crud-list';
 import '../styles/raleway.css';
@@ -17,11 +18,17 @@ export class Home extends React.Component {
   constructor(props) {
     super(props);
     this.handleSort = this.handleSort.bind(this);
+    this.handleSort = this.handleEdit.bind(this);
   }
 
   handleSort(column, order) {
     const { retreiveInvoices } = this.props;
     retreiveInvoices({order: {column, order}});
+  }
+
+  handleEdit(id) {
+    // Haven't found yet the right way with browserrouter v4
+    window.location = `http://localhost:3000/invoices/${id}/edit`;
   }
 
   render() {
@@ -32,11 +39,13 @@ export class Home extends React.Component {
           <h2>
           List of invoices
           </h2>
+          <button onClick={() => { window.location = 'http://localhost:3000/invoices/new'; }}>Add</button>
           <CrudList
             data={data.toJS()}
             cols={cols}
             handleSort={this.handleSort}
             handleDelete={deleteInvoice}
+            handleEdit={this.handleEdit}
             requestData={retreiveInvoices}
           />
         </div>

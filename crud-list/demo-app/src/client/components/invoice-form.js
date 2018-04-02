@@ -30,11 +30,11 @@ class InvoiceForm extends Component {
     return (
       <Form onSubmit={handleSubmit}>
         <Field
-          name="title"
+          name="description"
           component={Input}
-          type="text"
+          type="textarea"
           placeholder="Title"
-          label="Title"
+          label="Description"
         />
         <Field
           name="date"
@@ -46,8 +46,14 @@ class InvoiceForm extends Component {
         <Field
           name="customer"
           component={Input}
-          placeholder="Enter text here..."
-          label="Content"
+          placeholder="Name..."
+          label="Customer"
+        />
+        <Field
+          name="total"
+          component={Input}
+          placeholder="0"
+          label="Total"
         />
         <Field
           name="id"
@@ -82,10 +88,11 @@ export default connect(
 
     return ({
       initialValues: {
-        id: invoice.get('id'),
-        title: invoice.get('title'),
-        date: invoice.get('date').substr(0, 10),
-        content: invoice.get('content')
+        id: invoice.get('_id'),
+        description: invoice.get('description'),
+        date: invoice.get('date') ? invoice.get('date').substr(0, 10) : '',
+        customer: invoice.get('customer'),
+        total: invoice.get('total')
       }
     });
   }
