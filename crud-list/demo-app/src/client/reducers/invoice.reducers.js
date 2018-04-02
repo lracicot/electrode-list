@@ -18,6 +18,7 @@ function updateInvoiceSucess(state, invoice) {
 
 export default function invoiceReducers(state = new Map(), action) {
   state = fromJS(state);
+  action.invoice = fromJS(action.invoice);
   const { type } = action;
   let newState = {};
 

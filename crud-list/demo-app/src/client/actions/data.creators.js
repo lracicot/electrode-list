@@ -33,11 +33,10 @@ export function requestDataSuccess(data) {
  * Action creators
  * * * * * * * * * * * * * * */
 
-export function requestData(url, method, sendData, onSuccess, onFailure) {
+export function requestData(url, method, data, onSuccess, onFailure) {
   return dispatch => {
     try {
-      console.log(sendData);
-      return new Axios({ method, url, sendData }).then(res => {
+      return new Axios({ method, url, data }).then(res => {
         if (res.data.success === false) {
           return dispatch(onFailure(res.data.error));
         }
