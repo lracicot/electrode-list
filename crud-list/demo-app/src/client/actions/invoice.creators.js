@@ -11,9 +11,9 @@ import {
 /* eslint-disable func-style */
 
 export function createInvoice(invoice) {
-  return putData(
+  return postData(
     invoiceTypes.INVOICE_API.CREATE_INVOICE_URL,
-    { invoice },
+    {...invoice, items: []},
     Actions.createInvoiceSuccess
   );
 }
@@ -48,7 +48,7 @@ export function retreiveInvoices(query = {}) {
 }
 
 export function updateInvoice(invoice) {
-  return postData(
+  return putData(
     `${invoiceTypes.INVOICE_API.UPDATE_INVOICES_URL(invoice.id)}`,
     { invoice },
     Actions.updateInvoiceSuccess

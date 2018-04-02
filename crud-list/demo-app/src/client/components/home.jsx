@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import { List, Map } from 'immutable';
+import { List, Map, fromJS } from 'immutable';
 
 import { CrudList } from 'crud-list';
 import '../styles/raleway.css';
@@ -60,15 +60,16 @@ Home.defaultProps = {
 };
 
 const mapStateToProps = state => {
+  const appState = fromJS(state.app);
   return ({
-  data: state.app.getIn(['data', 'invoices']),
+  data: appState.getIn(['data', 'invoices']),
   cols: [
     { Header: 'Id', accessor: '_id'},
     { Header: 'Subtotal', accessor: 'subtotal'},
     { Header: 'Paid', accessor: 'paid'},
     { Header: 'Customer', accessor: 'customer'}
   ],
-  order: new Map({ column: 'published_date', order: 'DESC' })
+  order: new Map({ column: 'data', order: 'DESC' })
 })
 };
 

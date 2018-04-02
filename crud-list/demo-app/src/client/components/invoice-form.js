@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Field, Form, reduxForm } from 'redux-form/immutable';
+import Input from './Input/Input.component';
+import { fromJS } from 'immutable';
+import { Field, Form, reduxForm } from 'redux-form';
 
 const validate = (values) => {
   const errors = {};
@@ -23,7 +25,7 @@ class InvoiceForm extends Component {
     const {
       handleSubmit,
       pristine,
-      submitting,
+      submitting
     } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
@@ -35,16 +37,15 @@ class InvoiceForm extends Component {
           label="Title"
         />
         <Field
-          name="published_date"
+          name="date"
           component={Input}
           type="date"
-          placeholder="Published date"
-          label="Published date"
+          placeholder="Date"
+          label="Date"
         />
         <Field
-          name="content"
+          name="customer"
           component={Input}
-          componentClass="textarea"
           placeholder="Enter text here..."
           label="Content"
         />
@@ -53,7 +54,7 @@ class InvoiceForm extends Component {
           component="input"
           type="hidden"
         />
-        <Button className="btn btn-primary" type="submit" disabled={pristine || submitting}>Submit</Button>
+        <button className="btn btn-primary" type="submit" disabled={pristine || submitting}>Submit</button>
       </Form>
     );
   }
@@ -72,7 +73,8 @@ const form = reduxForm({
 
 export default connect(
   (state, props) => {
-    const invoice = state.getIn(['data', 'invoices']).find(p => p.get('id') === props.entityId);
+    const appState = fromJS(state.app);
+    const invoice = appState.getIn(['data', 'invoices']).find(p => p.get('id') === props.entityId);
 
     if (!invoice) {
       return {};
@@ -82,7 +84,7 @@ export default connect(
       initialValues: {
         id: invoice.get('id'),
         title: invoice.get('title'),
-        published_date: invoice.get('published_date').substr(0, 10),
+        date: invoice.get('date').substr(0, 10),
         content: invoice.get('content')
       }
     });

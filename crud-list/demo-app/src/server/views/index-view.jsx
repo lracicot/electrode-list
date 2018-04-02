@@ -5,19 +5,18 @@
 import ReduxRouterEngine from 'electrode-redux-router-engine';
 import { routes } from '../../client/routes';
 import { retreiveInvoices } from '../../client/actions/invoice.creators';
-import { List, Map } from 'immutable';
 import Promise from 'bluebird';
 
 import configureStore from '../configureStore';
 
 function createReduxStore(req, match) { // eslint-disable-line
   const initialState = {
-    app: new Map({
-      data: new Map({
-        invoices: new List(),
-        invoices_meta: new Map()
-      })
-    })
+    app: {
+      data: {
+        invoices: [],
+        invoices_meta: {}
+      }
+    }
   };
 
   const store = configureStore(initialState);

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { Map } from 'immutable';
-// import { reducer as formReducer } from 'redux-form/immutable'
+import { reducer as formReducer } from 'redux-form'
 
 import appReducers from './app.reducers';
 import invoiceReducers from './invoice.reducers';
@@ -14,5 +14,6 @@ const appReducer = (state = new Map(), action) => {
 };
 
 export default combineReducers({
-  app: appReducer
+  app: appReducer,
+  form: formReducer
 });

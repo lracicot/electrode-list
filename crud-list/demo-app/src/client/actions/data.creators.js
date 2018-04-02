@@ -36,6 +36,7 @@ export function requestDataSuccess(data) {
 export function requestData(url, method, sendData, onSuccess, onFailure) {
   return dispatch => {
     try {
+      console.log(sendData);
       return new Axios({ method, url, sendData }).then(res => {
         if (res.data.success === false) {
           return dispatch(onFailure(res.data.error));
