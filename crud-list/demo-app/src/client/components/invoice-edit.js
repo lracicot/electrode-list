@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Map } from 'immutable';
+import { fromJS } from 'immutable';
+import { browserHistory } from 'react-router';
 
-import InvoiceForm from './InvoiceForm.component';
-import * as InvoiceActions from './Invoice.creators';
+import InvoiceForm from './invoice-form';
+import * as InvoiceActions from '../actions/invoice.creators';
 
 
 /**
@@ -15,7 +16,8 @@ import * as InvoiceActions from './Invoice.creators';
 export class InvoiceEdit extends Component {
   saveAction(values) {
     const { updateInvoice } = this.props;
-    updateInvoice(values.toJS());
+    updateInvoice(values);
+    browserHistory.push('/invoices');
   }
 
   render() {
@@ -48,9 +50,14 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   updateInvoice: InvoiceActions.updateInvoice
 }, dispatch);
 
-const mapStateToProps = (state, ownProps) => ({
-  invoice: state.getIn(['data', 'invoices'])
-    .find(invoice => invoice.get('_id') === parseInt(ownProps.match.params.id, 10))
-});
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps);
+  const appState = fromJS(state.app);
+  return ({
+    invoice: appState.getIn(['data', 'invoices'])
+      .find(invoice => invoice.get('_id') === parseInt(ownProps.match.params.id, 10))
+  });
+};
 
-export const InvoiceEditContainer = connect(mapStateToProps, mapDispatchToProps)(InvoiceEdit);
+
+export default connect(mapStateToProps, mapDispatchToProps)(InvoiceEdit);

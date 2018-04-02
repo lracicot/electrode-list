@@ -18,7 +18,6 @@ function updateInvoiceSucess(state, invoice) {
 
 export default function invoiceReducers(state = new Map(), action) {
   state = fromJS(state);
-  action.invoice = fromJS(action.invoice);
   const { type } = action;
   let newState = {};
 
@@ -27,7 +26,7 @@ export default function invoiceReducers(state = new Map(), action) {
       newState = state.setIn(
         ['data', 'invoices'],
         state.getIn(['data', 'invoices']).filter(
-          p => p.get('id') !== action.invoice.get('id'),
+          p => p.get('_id') !== action.invoice.get('id'),
         ).push(action.invoice),
       );
       break;
@@ -36,7 +35,10 @@ export default function invoiceReducers(state = new Map(), action) {
       newState = state.setIn(['data', 'invoices'], action.invoices.map(invoice =>
         invoice
         .set('subtotal', invoice.get('items').reduce((sum, item) => {
-          return sum + item.get('unitPrice') * item.get('quantity');
+          if (typeof item === 'object') {
+            return sum + item.get('unitPrice') * item.get('quantity');
+          }
+          return sum;
         }, 0))
         .set('paid', invoice.get('paid') ? 1 : 0)
       ))

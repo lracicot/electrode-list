@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { browserHistory } from 'react-router';
 // import FlatButton from 'material-ui/FlatButton';
 
 import InvoiceForm from './invoice-form';
@@ -19,6 +20,7 @@ export class InvoiceCreate extends React.Component {
   saveAction(values) {
     const { createInvoice } = this.props;
     createInvoice(values);
+    browserHistory.push('/invoices');
   }
 
   render() {
